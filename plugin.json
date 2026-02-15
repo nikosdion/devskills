@@ -1,0 +1,49 @@
+{
+  "name": "devskills",
+  "version": "1.0.0",
+  "description": "Development skills for local Joomla and WordPress workflow automation",
+  "author": "Nicholas K. Dionysopoulos",
+  "skills": [
+    {
+      "name": "mysql",
+      "path": "mysql/SKILL.md",
+      "description": "Create/reset a local MySQL database and matching localhost user with utf8mb4 / utf8mb4_unicode_ci"
+    },
+    {
+      "name": "joomla",
+      "path": "joomla/SKILL.md",
+      "description": "Download and install Joomla CMS 5+ into a local directory, selecting the closest matching stable release from Joomla GitHub releases"
+    },
+    {
+      "name": "backup",
+      "path": "backup/SKILL.md",
+      "description": "Take a backup of a Joomla/WordPress site using Akeeba Backup CLI commands"
+    },
+    {
+      "name": "restore",
+      "path": "restore/SKILL.md",
+      "description": "Restore a Joomla/WordPress backup archive using Akeeba Kickstart and the Akeeba Backup Restoration Script"
+    },
+    {
+      "name": "unblock",
+      "path": "unblock/SKILL.md",
+      "description": "Unblock localhost access in Admin Tools for Joomla/WordPress"
+    },
+    {
+      "name": "japitoken",
+      "path": "japitoken/SKILL.md",
+      "description": "Get Joomla API token for authentication"
+    }
+  ],
+  "agentsFile": "AGENTS.md",
+  "repository": "https://github.com/dionysopoulos/devskills",
+  "license": "AGPL-3.0-or-later",
+  "keywords": [
+    "joomla",
+    "wordpress",
+    "akeeba",
+    "mysql",
+    "local-development",
+    "automation"
+  ]
+}
