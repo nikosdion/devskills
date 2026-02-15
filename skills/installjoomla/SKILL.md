@@ -1,6 +1,7 @@
 ---
-name: joomla
+name: installjoomla
 description: Download and install Joomla CMS 5+ into a local directory, selecting the closest matching stable release from Joomla GitHub releases, provisioning local MySQL defaults when missing, running CLI installation, and verifying frontend access on the corresponding *.akeeba.dev hostname.
+argument-hint: [version]
 ---
 
 # Joomla Local Install
@@ -28,7 +29,7 @@ Install Joomla 5 or later on localhost for development/testing.
 - `admin_username`: `nicholas`
 - `admin_password`: `B1ftekiP@tates`
 - `admin_email`: `nicholas@akeeba.com`
-- If DB fields are missing, create and use a local MySQL DB/user using the `mysql` skill in this repository with the directory basename as input.
+- If DB fields are missing, create and use a local MySQL DB/user using the `mysql` skill in this plugin with the directory basename as input.
 - `db_type`: `mysqli`
 - `db_host`: `localhost`
 - `db_user`: `<basename>`

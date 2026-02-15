@@ -1,6 +1,7 @@
 ---
 name: restore
 description: Restore a Joomla or WordPress site backup created by Akeeba Backup (Joomla/WordPress) or Akeeba Solo using Akeeba Kickstart and the Akeeba Backup Restoration Script, including multipart archive handling, restoration configuration, and post-restore cleanup.
+argument-hint: [backup_file]
 ---
 
 # Akeeba Backup Restoration

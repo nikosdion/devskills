@@ -1,6 +1,7 @@
 ---
 name: backup
 description: Take a site backup with Akeeba Backup on Joomla or WordPress. Use when a user asks to run a backup, optionally with a specific backup profile by ID or name, and determine CMS type plus Akeeba Backup installation before executing CLI backup commands.
+argument-hint: [profile]
 ---
 
 # Akeeba Backup Site Backup

@@ -1,6 +1,7 @@
 ---
 name: mysql
-description: Create or reset a local MySQL database and matching localhost user for development/testing. Use when a user asks to provision a localhost MySQL database with utf8mb4 collation, recreate existing database/user, and grant full privileges on that database to the same-named local user.
+description: Create or reset a local MySQL database and matching localhost user for development/testing.
+argument-hint: [database]
 ---
 
 # MySQL Local Database Bootstrap
