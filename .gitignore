@@ -1,0 +1,49 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.netbean
+nbproject/
+
+# PHP / Composer
+vendor/
+composer.lock
+.php-cs-fixer.cache
+.phpunit.result.cache
+
+# Logs and databases
+*.log
+*.sqlite
+
+# Joomla specific (often found in Joomla roots)
+configuration.php
+logs/
+tmp/
+cache/
+administrator/cache/
+administrator/logs/
+
+# Backup and restore artifacts
+*.jpa
+*.j01
+*.zip
+*.tar.gz
+*.tar.zst
+installation/
+kickstart.php
+import.php
+restore.php
+
+# Temporary files
+/.output*
