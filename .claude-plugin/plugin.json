@@ -1,0 +1,18 @@
+{
+  "name": "devskills",
+  "version": "1.0.0",
+  "description": "Development skills for local Joomla and WordPress workflow automation",
+  "author": {
+    "name": "Nicholas K. Dionysopoulos"
+  },
+  "repository": "https://github.com/dionysopoulos/devskills",
+  "license": "AGPL-3.0-or-later",
+  "keywords": [
+    "joomla",
+    "wordpress",
+    "akeeba",
+    "mysql",
+    "local-development",
+    "automation"
+  ]
+}
