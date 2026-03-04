@@ -173,6 +173,12 @@ Manage Joomla privacy (GDPR) requests and user consent records.
 Manage Joomla URL redirects.
 - **Example:** "List redirects on `~/Sites/mysite`"
 
+#### `jchildtemplate`
+Create a Joomla 5 Cassiopeia child template, with optional automatic OS-preference dark/light mode support via `prefers-color-scheme`.
+- **Example:** "Create a child template called `cassiopeia_mytheme` for `~/Sites/mysite`"
+- **Example:** "Create a Cassiopeia child template with dark mode support for `~/Sites/mysite`"
+- **Action:** Scaffolds the child template directory, writes `templateDetails.xml`, registers the template, and creates a `user.css` with brand colour variables and an optional dark mode block.
+
 #### `jtemplates`
 Manage Joomla template styles.
 - **Example:** "List site template styles on `~/Sites/mysite`"

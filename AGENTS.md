@@ -15,6 +15,7 @@ These instructions apply to the entire repository.
 
 ### Joomla API Skills (remote sites)
 
+- `jchildtemplate` (`jchildtemplate/SKILL.md`): Create a Joomla 5 Cassiopeia child template with optional auto dark/light mode CSS support.
 - `jconfig` (`jconfig/SKILL.md`): Read/update Joomla Global Configuration and per-component configuration via the API.
 - `jextensions` (`jextensions/SKILL.md`): List installed Joomla extensions via the API.
 - `joomlaupdate` (`joomlaupdate/SKILL.md`): Manage Joomla core updates via the API.
@@ -41,6 +42,7 @@ These instructions apply to the entire repository.
 
 - Use `mysql` when asked to create, reset, or recreate a local MySQL DB/user.
 - Use `joomla` when asked to download/install Joomla locally.
+- Use `jchildtemplate` when asked to create a child template, Cassiopeia child theme, or add dark/light mode to a Joomla 5 site.
 - Use `backup` when asked to take/create/run a backup of a Joomla or WordPress site (also see `jcliakeeba` for Joomla-only local sites).
 - Use `restore` when asked to restore/extract/recover a site from a backup archive.
 - Use `unblock` when asked to “unblock localhost”, “unblock me”, or “unblock my access” (also see `jcliadmintools` unblock action for Joomla local sites).
