@@ -38,10 +38,14 @@ rm -rf "$STAGING"
 mkdir -p "$STAGING"
 # Copy everything except the staging dir itself and generated artifacts.
 rsync -a \
+  --exclude "/.claude" \
+  --exclude "/.env" \
+  --exclude "/.git" \
   --exclude "/.staging" \
+  --exclude "/.idea" \
   --exclude "/env.sample" \
   --exclude "/devskills.zip" \
-  --exclude "/.env" \
+  --exclude "/mempalace.yaml" \
   "$SCRIPT_DIR/" "$STAGING/"
 
 # Substitute placeholders in every SKILL.md inside the staging copy.
@@ -75,11 +79,16 @@ cd "$STAGING"
 zip -r "$OUTPUT" . \
   --exclude "./package.sh" \
   --exclude "./devskills.zip" \
-  --exclude "./.gitignore" \
+  --exclude "./.claude" \
   --exclude "./.env" \
-  --exclude "./.staging/*" \
+  --exclude "./.gitignore" \
   --exclude "./.git" \
-  --exclude "./.git/*"
+  --exclude "./.git/*" \
+  --exclude "./.idea" \
+  --exclude "./.idea/*" \
+  --exclude "./.mempalace" \
+  --exclude "./.mempalace/*" \
+  --exclude "./.staging/*"
 
 cd "$SCRIPT_DIR"
 rm -rf "$STAGING"
