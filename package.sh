@@ -77,7 +77,9 @@ zip -r "$OUTPUT" . \
   --exclude "./devskills.zip" \
   --exclude "./.gitignore" \
   --exclude "./.env" \
-  --exclude "./.staging/*"
+  --exclude "./.staging/*" \
+  --exclude "./.git" \
+  --exclude "./.git/*"
 
 cd "$SCRIPT_DIR"
 rm -rf "$STAGING"
