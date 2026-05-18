@@ -45,8 +45,15 @@ rsync -a \
   "$SCRIPT_DIR/" "$STAGING/"
 
 # Substitute placeholders in every SKILL.md inside the staging copy.
+# BSD sed (macOS) requires an explicit empty-string suffix after -i; GNU sed (Linux) does not.
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  SED_INPLACE=(sed -i '')
+else
+  SED_INPLACE=(sed -i)
+fi
+
 find "$STAGING" -name "SKILL.md" | while IFS= read -r skill_file; do
-  sed -i \
+  "${SED_INPLACE[@]}" \
     -e "s|{{MYSQL_ADMIN_USER}}|${MYSQL_ADMIN_USER}|g" \
     -e "s|{{MYSQL_ADMIN_PASSWORD}}|${MYSQL_ADMIN_PASSWORD}|g" \
     -e "s|{{AKEEBA_KS_DIR}}|${AKEEBA_KS_DIR}|g" \
