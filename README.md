@@ -5,7 +5,7 @@ A small set of agentic AI skills I use for local development.
 > [!WARNING]
 > These skills are meant for **local development** only. They are NOT secure; quite the opposite.
 
-These skills can be used as a **Claude plugin** — both with Claude Code (as local skills) and with Claude Desktop (via the Cowork feature).
+These skills can be used as a **Claude plugin** — both with Claude Code (as local skills) and with Claude Desktop (via the Cowork feature) — and also with **Codex** and **Qwen Code**.
 
 ## Skills and Usage Examples
 
@@ -318,23 +318,53 @@ This produces `devskills.zip` in the project root. The build process:
 
 ## Using with Claude Code
 
-The skill files contain `{{VARIABLE}}` placeholders that must be substituted before use. Claude Code does not install plugins directly from ZIP files, so you need to extract the built ZIP and point Claude Code at the resulting directory.
+The skill files contain `{{VARIABLE}}` placeholders that must be substituted before use. Claude Code does not install plugins directly from ZIP files, so the installer builds the plugin and extracts it into a local plugin marketplace for you.
 
-1. Build the plugin ZIP (see [Building the plugin](#building-the-plugin) above).
-2. Extract the ZIP into a directory of your choice:
-   ```bash
-   mkdir -p ~/claude-plugins/devskills
-   unzip devskills.zip -d ~/claude-plugins/devskills
-   ```
-3. Add the extracted directory as a plugin marketplace and install the plugin:
-   ```bash
-   /plugin marketplace add ~/claude-plugins/devskills
-   /plugin install devskills@devskills
-   ```
-   Or load it for a single session only:
-   ```bash
-   claude --plugin-dir ~/claude-plugins/devskills
-   ```
+```bash
+./install-claude.sh
+```
+
+This rebuilds `devskills.zip`, extracts it into `~/.claude-plugins/devskills/`, registers it in a local
+Claude Code plugin marketplace (`~/.claude-plugins/.claude-plugin/marketplace.json`), and installs/updates
+the plugin via the `claude` CLI. Run `/reload-plugins` in Claude Code afterwards (or restart it).
+
+Rerun `./install-claude.sh` after every edit — it rebuilds from source each time.
+
+To load it for a single session instead, without installing it permanently:
+```bash
+bash package.sh
+mkdir -p ~/claude-plugins/devskills
+unzip devskills.zip -d ~/claude-plugins/devskills
+claude --plugin-dir ~/claude-plugins/devskills
+```
+
+---
+
+## Using with Codex
+
+```bash
+./install-codex.sh
+```
+
+This rebuilds `devskills.zip`, installs a clean copy under `~/plugins/devskills/`, registers it in your
+personal Codex plugin marketplace (`~/.agents/plugins/marketplace.json`), and installs it via the
+`codex` CLI. Start a new Codex conversation to load it.
+
+Rerun `./install-codex.sh` after every edit.
+
+---
+
+## Using with Qwen Code
+
+```bash
+./install-qwen.sh
+```
+
+This rebuilds `devskills.zip`, extracts it into `~/.qwen-plugins/devskills/`, and links that directory
+into Qwen Code via `qwen extensions link`. Restart Qwen Code to pick up the link.
+
+Rerun `./install-qwen.sh` after every edit — the linked directory is a build output, not the source
+tree, since the source `SKILL.md` files still contain unsubstituted `{{VARIABLE}}` placeholders.
 
 ---
 

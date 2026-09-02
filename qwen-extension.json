@@ -1,0 +1,7 @@
+{
+  "name": "devskills",
+  "version": "1.1.0",
+  "description": "Development skills for local Joomla and WordPress workflow automation",
+  "contextFileName": "QWEN.md",
+  "displayName": "Dev Skills"
+}

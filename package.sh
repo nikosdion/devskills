@@ -45,6 +45,8 @@ rsync -a \
   --exclude "/env.sample" \
   --exclude "/devskills.zip" \
   --exclude "/mempalace.yaml" \
+  --exclude "/AGENTS.md" \
+  --exclude "/CLAUDE.md" \
   "$SCRIPT_DIR/" "$STAGING/"
 
 # Substitute placeholders in every SKILL.md inside the staging copy.
@@ -76,6 +78,9 @@ rm -f "$OUTPUT"
 cd "$STAGING"
 zip -r "$OUTPUT" . \
   --exclude "./package.sh" \
+  --exclude "./install-claude.sh" \
+  --exclude "./install-codex.sh" \
+  --exclude "./install-qwen.sh" \
   --exclude "./devskills.zip" \
   --exclude "./.claude" \
   --exclude "./.env" \

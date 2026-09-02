@@ -1,0 +1,24 @@
+{
+  "name": "devskills",
+  "version": "1.1.0",
+  "description": "Development skills for local Joomla and WordPress workflow automation",
+  "author": {
+    "name": "Nicholas K. Dionysopoulos"
+  },
+  "repository": "https://github.com/dionysopoulos/devskills",
+  "license": "AGPL-3.0-or-later",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Dev Skills",
+    "shortDescription": "Local Joomla/WordPress dev workflow automation",
+    "longDescription": "Skills for local MySQL/Joomla/WordPress site setup, Akeeba backup and restore, and remote Joomla API/CLI administration.",
+    "developerName": "Nicholas K. Dionysopoulos",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": [
+      "Install a fresh Joomla site locally.",
+      "Take a backup of this site with Akeeba Backup.",
+      "Restore this backup archive with Akeeba Kickstart."
+    ]
+  }
+}
