@@ -283,7 +283,6 @@ The `.env` file is used by `package.sh` to substitute placeholders in the skill 
 | --- | --- |
 | `MYSQL_ADMIN_USER` | Username for an admin-capable MySQL/MariaDB account used to create databases and users. This is usually (but not necessarily) the `root` account. |
 | `MYSQL_ADMIN_PASSWORD` | Password for the admin-capable MySQL/MariaDB account above. |
-| `AKEEBA_KS_DIR` | Path to the local Akeeba Kickstart source repository (`ks9`). Used by the `restore` skill to build Kickstart locally when no pre-built release is available. |
 | `JOOMLA_SITES_DIR` | Path to the directory where local Joomla sites are created, e.g. `~/Sites`. Used as the default parent directory when installing Joomla or working with sites. |
 | `JOOMLA_SITE_DOMAIN` | The local domain suffix for your development sites, e.g. `example.test`. Used to construct site URLs such as `http://mysite.example.test`. |
 | `JOOMLA_ADMIN_NAME` | Full display name for the Joomla Super Administrator account created during installation, e.g. `Jane Doe`. |

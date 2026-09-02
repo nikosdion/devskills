@@ -23,7 +23,6 @@ fi
 # Ensure every expected variable is set.
 : "${MYSQL_ADMIN_USER:?MYSQL_ADMIN_USER must be set in .env}"
 : "${MYSQL_ADMIN_PASSWORD:?MYSQL_ADMIN_PASSWORD must be set in .env}"
-: "${AKEEBA_KS_DIR:?AKEEBA_KS_DIR must be set in .env}"
 : "${JOOMLA_SITES_DIR:?JOOMLA_SITES_DIR must be set in .env}"
 : "${JOOMLA_SITE_DOMAIN:?JOOMLA_SITE_DOMAIN must be set in .env}"
 : "${JOOMLA_ADMIN_NAME:?JOOMLA_ADMIN_NAME must be set in .env}"
@@ -60,7 +59,6 @@ find "$STAGING" -name "SKILL.md" | while IFS= read -r skill_file; do
   "${SED_INPLACE[@]}" \
     -e "s|{{MYSQL_ADMIN_USER}}|${MYSQL_ADMIN_USER}|g" \
     -e "s|{{MYSQL_ADMIN_PASSWORD}}|${MYSQL_ADMIN_PASSWORD}|g" \
-    -e "s|{{AKEEBA_KS_DIR}}|${AKEEBA_KS_DIR}|g" \
     -e "s|{{JOOMLA_SITES_DIR}}|${JOOMLA_SITES_DIR}|g" \
     -e "s|{{JOOMLA_SITE_DOMAIN}}|${JOOMLA_SITE_DOMAIN}|g" \
     -e "s|{{JOOMLA_ADMIN_NAME}}|${JOOMLA_ADMIN_NAME}|g" \

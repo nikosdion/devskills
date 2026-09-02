@@ -26,11 +26,7 @@ Treat all matching multipart files with the same basename as part of one backup 
 ## Prepare Kickstart
 
 1. Look for Kickstart ZIP in `/release` named `kickstart-core-*.zip`.
-2. If missing and `{{AKEEBA_KS_DIR}}` exists:
-- Change directory there.
-- Run `phing git`.
-3. Check `/release` again for `kickstart-core-*.zip`.
-4. If still missing, download Kickstart Core from `https://www.akeeba.com/download.html`.
+2. If missing, download the official Kickstart Core ZIP from `https://www.akeeba.com/download.html`.
 
 ## Extract With Kickstart
 
@@ -109,7 +105,7 @@ If successful, delete `<site_dir>/installation`.
 Report:
 
 - Archive type and whether multipart files were detected
-- Kickstart source used (`/release`, `ks9 build`, or downloaded)
+- Kickstart source used (`/release` or downloaded)
 - Database settings source (provided or generated via `mysql` skill)
 - Restoration command result
 - Cleanup actions performed
