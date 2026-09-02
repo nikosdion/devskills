@@ -7,6 +7,8 @@ A small set of agentic AI skills I use for local development.
 
 These skills can be used as a **Claude plugin** — both with Claude Code (as local skills) and with Claude Desktop (via the Cowork feature) — and also with **Codex** and **Qwen Code**.
 
+Many of those skills use Akeeba extensions or are written for the same. This repository is not affiliated with or endorsed by Akeeba Ltd.
+
 ## Skills and Usage Examples
 
 ### Infrastructure & Setup
