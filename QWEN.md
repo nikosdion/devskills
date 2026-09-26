@@ -24,5 +24,5 @@ calls `bash package.sh`, which fails without it.
 
 ## Skill authoring conventions
 
-See `CLAUDE.md` for the full skill catalog and authoring conventions (frontmatter rules, `{{VARIABLE}}`
+See `AGENTS.md` for the full skill catalog and authoring conventions (frontmatter rules, `{{VARIABLE}}`
 placeholder substitution, `jcli*` vs `j*` skill selection). They apply identically here.
