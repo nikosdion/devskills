@@ -25,6 +25,7 @@ unzip -o "$OUTPUT" -d "$INSTALL_DIR"
 # Ensure ~/.claude-plugins/marketplace.json exists.
 # ---------------------------------------------------------------------------
 MARKETPLACE="$HOME/.claude-plugins/.claude-plugin/marketplace.json"
+mkdir -p "$(dirname "$MARKETPLACE")"
 
 if [ ! -f "$MARKETPLACE" ]; then
   cat > "$MARKETPLACE" <<'EOF'

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Added Kimi Code support (`kimi.plugin.json`, `install-kimi.sh`).
 - Added example usage for each skill to `README.md`.
 - Added `japitoken` skill to retrieve Joomla API tokens from local development sites.
 - Added `AGENTS.md` to define repository scope, skills, and execution rules.

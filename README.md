@@ -5,7 +5,7 @@ A small set of agentic AI skills I use for local development.
 > [!WARNING]
 > These skills are meant for **local development** only. They are NOT secure; quite the opposite.
 
-These skills can be used as a **Claude plugin** — both with Claude Code (as local skills) and with Claude Desktop (via the Cowork feature) — and also with **Codex** and **Qwen Code**.
+These skills can be used as a **Claude plugin** — both with Claude Code (as local skills) and with Claude Desktop (via the Cowork feature) — and also with **Codex**, **Qwen Code**, and **Kimi Code**.
 
 Many of those skills use Akeeba extensions or are written for the same. This repository is not affiliated with or endorsed by Akeeba Ltd.
 
@@ -367,6 +367,26 @@ into Qwen Code via `qwen extensions link`. Restart Qwen Code to pick up the link
 
 Rerun `./install-qwen.sh` after every edit — the linked directory is a build output, not the source
 tree, since the source `SKILL.md` files still contain unsubstituted `{{VARIABLE}}` placeholders.
+
+---
+
+## Using with Kimi Code
+
+```bash
+./install-kimi.sh
+```
+
+This rebuilds `devskills.zip` and extracts it into `~/.kimi-plugins/devskills/` (keep this directory in
+place). Kimi Code has no non-interactive plugin CLI and copies local installs into its own managed plugin
+directory, so finish the install inside Kimi Code:
+
+```text
+/plugins install ~/.kimi-plugins/devskills
+/reload
+```
+
+Rerun `./install-kimi.sh` after every edit, then repeat both commands; reinstalling is how updates reach
+Kimi Code's managed copy.
 
 ---
 

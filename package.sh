@@ -81,6 +81,7 @@ zip -r "$OUTPUT" . \
   --exclude "./install-claude.sh" \
   --exclude "./install-codex.sh" \
   --exclude "./install-qwen.sh" \
+  --exclude "./install-kimi.sh" \
   --exclude "./devskills.zip" \
   --exclude "./.claude" \
   --exclude "./.env" \

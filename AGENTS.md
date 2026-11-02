@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This file provides guidance to Claude Code, Codex, and Qwen Code when working with code in this
+This file provides guidance to Claude Code, Codex, Qwen Code, and Kimi Code when working with code in this
 repository.
 
 ## Scope
@@ -20,14 +20,19 @@ Edits here are NOT live until installed. Choose the host you are deploying to:
 - **Qwen Code** — run `./install-qwen.sh`. This rebuilds `devskills.zip`, extracts it into
   `~/.qwen-plugins/devskills/`, and links that directory via `qwen extensions link`. Restart Qwen Code
   to pick up the link.
+- **Kimi Code** — run `./install-kimi.sh`. This rebuilds `devskills.zip` and extracts it into
+  `~/.kimi-plugins/devskills/`. Finish the install — and every update — in the Kimi Code TUI with
+  `/plugins install ~/.kimi-plugins/devskills` followed by `/reload`: Kimi Code copies local installs
+  into its managed plugin directory, and has no non-interactive plugin CLI.
 
-All three installers call `bash package.sh` internally, so `.env` must exist (copy it from
+All four installers call `bash package.sh` internally, so `.env` must exist (copy it from
 `env.sample` first) before any of them will succeed.
 
 **Bump the version in every manifest for every content change.** The Claude cache is keyed by
 `.claude-plugin/plugin.json`; the Codex install mirrors whatever sits in `.codex-plugin/plugin.json`;
-the Qwen Code manifest in `qwen-extension.json` is informational but documents the loaded release. If
-any of them does not change, the corresponding host keeps serving the previous version.
+the Qwen Code manifest in `qwen-extension.json` is informational but documents the loaded release; the
+Kimi Code managed copy is built from whatever sits in `kimi.plugin.json` at stage time. If any of them
+does not change, the corresponding host keeps serving the previous version.
 
 Building the plugin ZIP without installing it anywhere (e.g. for Claude Desktop's Cowork custom plugin
 upload) is still just `bash package.sh` — see the README for that flow.

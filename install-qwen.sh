@@ -27,6 +27,18 @@ rm -rf "$INSTALL_DIR"
 mkdir -p "$INSTALL_DIR"
 unzip -o "$OUTPUT" -d "$INSTALL_DIR"
 
+# ---------------------------------------------------------------------------
+# Idempotent link: the rebuild above already refreshed the linked directory,
+# so skip re-linking it. Linking again would trigger an interactive trust
+# prompt on every run. Match on the absolute path because the display name
+# ("Dev Skills") does not contain the internal id.
+# ---------------------------------------------------------------------------
+if qwen extensions list 2>/dev/null | grep -Fq "$INSTALL_DIR"; then
+  echo "$PLUGIN_NAME is already linked for Qwen Code; refreshed $INSTALL_DIR."
+  echo "Restart Qwen Code to pick up the changes."
+  exit 0
+fi
+
 qwen extensions link "$INSTALL_DIR"
 
 echo "Linked $PLUGIN_NAME for Qwen Code. Restart Qwen Code to load it."
