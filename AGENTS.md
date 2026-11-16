@@ -5,28 +5,12 @@ repository.
 
 ## Scope
 
-These instructions apply to the entire repository.
+These instructions apply to the entire repository: a plugin of agent skills (`skills/*/SKILL.md`) packaged by `package.sh` for Claude Code, Codex, Qwen Code and Kimi Code.
 
 ## Deploying changes
 
-Edits here are NOT live until installed. Choose the host you are deploying to:
+Edits here are NOT live until installed: run `./install-claude.sh`, `./install-codex.sh`, `./install-qwen.sh` or `./install-kimi.sh` for the host you are deploying to. `.env` must exist (copy it from `env.sample`) before any installer succeeds. `bash package.sh` alone builds the plugin ZIP without installing it.
 
-- **Claude Code** — run `./install-claude.sh`. This rebuilds `devskills.zip` (substituting your `.env`
-  values into every `SKILL.md`), replaces `~/.claude-plugins/devskills/`, registers the plugin in the
-  local marketplace, and reinstalls it. Then run `/reload-plugins` in Claude Code (or restart it).
-- **Codex** — run `./install-codex.sh`. This rebuilds `devskills.zip`, installs a clean copy under
-  `~/plugins/devskills/`, registers it in the personal marketplace, and installs it via the Codex CLI.
-  Start a new Codex conversation to load it.
-- **Qwen Code** — run `./install-qwen.sh`. This rebuilds `devskills.zip`, extracts it into
-  `~/.qwen-plugins/devskills/`, and links that directory via `qwen extensions link`. Restart Qwen Code
-  to pick up the link.
-- **Kimi Code** — run `./install-kimi.sh`. This rebuilds `devskills.zip` and extracts it into
-  `~/.kimi-plugins/devskills/`. Finish the install — and every update — in the Kimi Code TUI with
-  `/plugins install ~/.kimi-plugins/devskills` followed by `/reload`: Kimi Code copies local installs
-  into its managed plugin directory, and has no non-interactive plugin CLI.
-
-All four installers call `bash package.sh` internally, so `.env` must exist (copy it from
-`env.sample` first) before any of them will succeed.
 
 **Bump the version in every manifest for every content change.** The Claude cache is keyed by
 `.claude-plugin/plugin.json`; the Codex install mirrors whatever sits in `.codex-plugin/plugin.json`;
@@ -34,67 +18,12 @@ the Qwen Code manifest in `qwen-extension.json` is informational but documents t
 Kimi Code managed copy is built from whatever sits in `kimi.plugin.json` at stage time. If any of them
 does not change, the corresponding host keeps serving the previous version.
 
-Building the plugin ZIP without installing it anywhere (e.g. for Claude Desktop's Cowork custom plugin
-upload) is still just `bash package.sh` — see the README for that flow.
+## Always-on rules
 
-## Repository Skills
-
-- `mysql` (`skills/mysql/SKILL.md`): Create/reset a local MySQL database and matching localhost user
-  with `utf8mb4` / `utf8mb4_unicode_ci`.
-- `installjoomla` (`skills/installjoomla/SKILL.md`): Download and install Joomla 5+ locally, preferring
-  stable releases and `.tar.zst` / `.tar.gz` packages.
-- `backup` (`skills/backup/SKILL.md`): Take a backup of a Joomla/WordPress site using Akeeba Backup CLI
-  commands.
-- `restore` (`skills/restore/SKILL.md`): Restore a Joomla/WordPress backup archive using Akeeba
-  Kickstart and the Akeeba Backup Restoration Script.
-- `unblock` (`skills/unblock/SKILL.md`): Unblock localhost access in Admin Tools for Joomla/WordPress.
-- `japitoken` (`skills/japitoken/SKILL.md`): Retrieve a valid Joomla API token from a local development
-  Joomla site.
-- `jchildtemplate` (`skills/jchildtemplate/SKILL.md`): Create a Joomla 5 Cassiopeia child template with
-  optional auto dark/light mode CSS support.
-
-### Joomla API Skills (remote sites)
-
-- `jconfig`, `jextensions`, `joomlaupdate`, `jusers`, and the other `j*` skills (content, menus,
-  modules, banners, contacts, fields, tags, redirects, privacy, messages, media, templates, plugins,
-  language content/overrides/packages, news feeds, extensions) — manage a remote Joomla site over its
-  REST API. Require `japitoken`.
-
-### Joomla CLI Skills (local sites — preferred over API skills)
-
-- `jclisite`, `jcliconfig`, `jclicore`, `jclidb`, `jcliext`, `jcliuser`, `jclischeduler`,
-  `jcliadmintools`, `jcliakeeba`, `jcliats`, `jclidatacompliance`, `jclidocimport`, `jclipanopticon` —
-  administer a locally hosted Joomla site through its CLI console (`cli/joomla.php`) instead of the
-  REST API.
-
-## Skill Selection Rules
-
-- **For local Joomla sites:** prefer `jcli*` CLI skills over `j*` API skills.
-- **For remote Joomla sites:** use `j*` API skills (require `japitoken`).
-- Combine skills when required by workflow (for example `installjoomla` or `restore` may call `mysql`
-  for missing DB credentials).
-
-## Execution Conventions
-
-- Detect Joomla vs WordPress before running CMS-specific commands.
-- Ensure it is a locally hosted site resolving to a localhost or internal network domain.
-- Verify required extension/plugin presence before running product-specific CLI commands.
-- Prefer non-interactive CLI execution where supported.
-- Stop and report clearly when prerequisites are missing or the requested action is unsupported.
-
-## Skill authoring conventions
-
-- Keep each `SKILL.md` concise, deterministic, and task-focused.
-- Keep YAML frontmatter limited to `name` and `description`.
-- The `description` frontmatter field is the trigger — be precise. Too broad and the skill fires
-  spuriously; too narrow and it misses.
-- When updating a skill, preserve product names and CLI identifiers exactly as required by that
-  product.
-- `{{VARIABLE}}` placeholders in `SKILL.md` files are substituted from `.env` by `package.sh` at build
-  time — see `env.sample` for the full list. Add new variables to both `env.sample` and `package.sh`
-  together.
-- After adding, removing, or renaming a skill, update the skill catalog above so it keeps matching
-  `skills/`.
+- `{{VARIABLE}}` placeholders in `SKILL.md` files are substituted from `.env` by `package.sh`; add new variables to both `env.sample` and `package.sh` together.
+- Keep YAML frontmatter in `SKILL.md` limited to `name` and `description`.
+- After adding, removing, or renaming a skill, update the skill catalog in `.claude/memory/skill-catalog-and-selection.md` so it keeps matching `skills/`.
+- Prefer `jcli*` CLI skills for local Joomla sites and `j*` API skills (which need `japitoken`) for remote ones.
 
 ## Git: commit and tag outside the sandbox
 
@@ -110,10 +39,14 @@ with `--no-gpg-sign`, `-c commit.gpgsign=false` or unsigned tags.
 ## Project memory
 
 Project memory lives in `.claude/memory/`, committed with the code, so that it is shared across machines
-and across agentic harnesses (Claude Code, Codex, Qwen Code, Kimi Code, Junie, …).
+and across agentic harnesses (Claude Code, Codex, Qwen Code, Kimi Code, Junie, …). Read the matching file before starting that kind of work.
 
-There are no memory files yet. When there is something worth remembering, create `.claude/memory/`,
-the topic file, and a table here mapping each file to a concrete trigger ("Before you… | Read").
+| File | Read it when… |
+|------|---------------|
+| [`deploying-changes.md`](.claude/memory/deploying-changes.md) | Before you install or reinstall the plugin on a host, or bump plugin manifest versions |
+| [`skill-catalog-and-selection.md`](.claude/memory/skill-catalog-and-selection.md) | Before you add, remove or rename a skill, or decide which skill (CLI vs API) a workflow should use |
+| [`skill-authoring.md`](.claude/memory/skill-authoring.md) | Before you write or edit a `SKILL.md` (frontmatter, description, `{{VARIABLE}}` placeholders) |
+| [`bash-scripting.md`](.claude/memory/bash-scripting.md) | Before you write or edit `package.sh`, an `install-*.sh` script or any shell snippet with BSD/GNU or other environment-specific variants |
 
 ### Recording new memories
 
